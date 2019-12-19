@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -13,6 +13,14 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created () {
+    console.log(this.$auth)
+    console.log(this.$auth.mutate(`
+      mutation log{
+        login(account:"root",password:"bwg7xj98b3")
+      }
+    `))
   }
 }
 </script>
