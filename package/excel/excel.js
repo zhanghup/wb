@@ -1,5 +1,4 @@
 import XLSX from 'xlsx'
-require('script-loader!file-saver')
 
 function Workbook () {
   if (!(this instanceof Workbook)) return new Workbook()
