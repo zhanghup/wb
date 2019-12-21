@@ -26,13 +26,17 @@
       <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <li><wrap/></li>
     </ul>
   </div>
 </template>
 
 <script>
+import wrap from "../../package/form/wrap.vue"
+
 export default {
   name: 'HelloWorld',
+  components:{wrap},
   props: {
     msg: String
   }

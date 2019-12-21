@@ -15,12 +15,6 @@ export default {
     HelloWorld
   },
   created () {
-    console.log(this.$auth)
-    console.log(this.$auth.mutate(`
-      mutation log{
-        login(account:"root",password:"bwg7xj98b3")
-      }
-    `))
   }
 }
 </script>
