@@ -1,36 +1,59 @@
 # form 表单说明
 
-## 整体示例
+## 整体示例（其中，datas可以单独取出）
 
 ```js
-[
-  {
-    title: "标题",
-    key: "取值",
-    field: "title",
-    type: "input:text",
-    span: 24,
-    default: 1,
-    items: [{ title: "状态1", value: 1, disable: true }]
+let fields = {
+  item1:{
+    title:"示例1",
+    datas:[
+      {
+        title: "标题",
+        key: "取值",
+        field: "title",
+        type: "input:text",
+        span: 24,
+        default: 1,
+        items: [{ title: "状态1", value: 1, disable: true }]
+      }
+    ]
+  },
+  item2:{
+    title:"示例1",
+    datas:[
+      {
+        title: "标题2",
+        key: "取值",
+        field: "title",
+        type: "input:text",
+        span: 24,
+        default: 1,
+        items: [{ title: "状态1", value: 1, disable: true }]
+      }
+    ]
   }
-];
+}
 ```
 
 ## title 展示的文字说明
 
-## key
-
-1. key: "sensor.unit
-2. key: "[]sensors.unit = 'F1'"
-3. key: "[]sensors.value = 1"
-
 ## field
 
-最终返回到表单 form 中的字段，例如：fiele:"title",则结果为
+最终返回到表单 form 中的字段
 
+例1：fiele:"title",则结果为
+
+```json
+{"title":""}
 ```
-{title:""}
+
+例2：fiele:"station.title",则结果为
+
+```json
+{"station":{"title":""}}
 ```
+
+
 
 - 若 field 字段为空，则取值 key
 

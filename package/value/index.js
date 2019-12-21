@@ -4,6 +4,30 @@ class Format {
     this.value = value
   }
 
+  format (fmt) {
+    if (fmt.indexOf("dict:")) {
+      return this.dictFormat(fmt.slice(5))
+    }
+  }
+
+  dictFormat (key) {
+    if (!this.dicts) {
+      return ""
+    }
+    let o = this.dicts.find(r => r.code == key)
+    if (!o) {
+      return ""
+    }
+    if (!o.values) {
+      return ""
+    }
+    o = o.values.find(r => r.value == this.vlaue)
+    if (!o) {
+      return ""
+    }
+    return o.name
+  }
+
 }
 
 
@@ -13,6 +37,7 @@ class Value {
       console.error("request type Array")
       return
     }
+    return this
   }
 
   slice_eq = /\[\](.*)\.(.*?)\s*={2,3}\s*(.*?)$/
@@ -79,8 +104,25 @@ class Value {
     return new Format(this.dicts, this.getValue(key, object))
   }
 
-  valf () {
+  add (object, field, value) {
+    if (!object) {
+      return {}
+    }
+    if (!field) {
+      return object
+    }
 
+    let i = field.indexOf(".")
+    if (i > 0) {
+      let key = field.slice(0, i)
+      if (!object[key]) {
+        object[key] = {}
+      }
+      object[key] = this.add(object[key], field.slice(i + 1), value)
+    } else {
+      object[field] = value
+    }
+    return object
   }
 }
 
