@@ -4,6 +4,9 @@
     <el-drawer size="600px" title="我是标题" :visible.sync="opened" :with-header="false" direction="rtl">
       <div class="content-wrap">
         <div class="content">
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+
+          </el-form>
           <tagForm />
         </div>
         <div class="button">
